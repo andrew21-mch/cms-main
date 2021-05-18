@@ -9,7 +9,7 @@ if(isset($_POST['register'])){
     $user_email = $_POST["email"];
 
 
-    $sql = "INSERT INTO `wtaxy_user`(`user_name`, `user_email`, `user_pass`, `user_first_name`, `user_last_name`) VALUES ('[$username]','[$user_email]','[$password]','[$first_name]','[$last_name]')";
+    $sql = "INSERT INTO `wtaxy_user`(`user_name`, `user_email`, `user_pass`, `user_first_name`, `user_last_name`) VALUES ('$username','$user_email','$password','$first_name','$last_name')";
     if(mysqli_query($conn,$sql)){
         echo"<script>alert('YAccount Succesfully Created');</script>";
     }
