@@ -10,9 +10,14 @@ function ValidatePass($password, $password_repeat){
     }
 }
 function UserExist($username){
-    $record = "SELECT * FROM wtaxy_user";
-    $result = mysqli_fetch_assoc($$record);
+    $stmt = "SELECT user_email FROM wtaxy_user WHERE user_email=$username";
+    $result = mysqli_query($conn,$stmt);
+    if(mysqli_num_rows($result)) {
+        return true;
+    }
+    else{
+        return false;
+    }
 
-    print_r($result);
-
+    
 }
