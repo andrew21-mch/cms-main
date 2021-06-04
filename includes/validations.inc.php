@@ -9,15 +9,13 @@ function ValidatePass($password, $password_repeat){
         return false;
     }
 }
-function UserExist($username){
-    $stmt = "SELECT user_email FROM wtaxy_user WHERE user_email=$username";
-    $result = mysqli_query($conn,$stmt);
-    if(mysqli_num_rows($result)) {
+function CheckUserExist($username){
+    $sql1 = "SELECT user_email, user_pass from wtaxy_user where user_name ='$username'";  
+            $result = mysqli_query($conn, $sql1);  
+            $row = mysqli_fetch_array($result, MYSQLI_ASSOC);  
+            $count = mysqli_num_rows($result);    
+            if($count == 1){  
+                echo"<script>alert('Username already exist In system')</script>";
+            } 
         return true;
-    }
-    else{
-        return false;
-    }
-
-    
 }
